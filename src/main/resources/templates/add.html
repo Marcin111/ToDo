@@ -1,32 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <!--dwa linki z bootstrapa i z fontawesome z cdn-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <style>
+
+        .red {
+            color: red;
+            /*font-size:25px;*/
+        }
+
+        .green {
+            color: green;
+            /*font-size:25px;*/
+        }
+
+    </style>
 </head>
 <body>
 
-<a href="/tasks">Wszystke</a>
-<a href="/finished">Skonczone</a>
-<a href="/unfinished">Nieskonczone</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <div class="row">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/tasks">Wszystke<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/finished">Skonczone</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/unfinished">Nieskonczone</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
 
-<h1>Dodaj zadanie</h1>
 
-<form action="/tasks" method="post">
+<!--<a href="/tasks">Wszystke</a>-->
+<!--<a href="/finished">Skonczone</a>-->
+<!--<a href="/unfinished">Nieskonczone</a>-->
+<section id="add-task">
 
-    <label>Podaj nazwe</label>
+    <div class="container">
 
-    <input type="text" name="name">
+        <div class="row">
 
-    <label>Podaj opis</label>
+            <header>
+                <h1 class="text-center">Dodaj zadanie</h1>
+            </header>
+        </div>
+        <div class="row">
 
-    <textarea name="description"></textarea>
+            <!--<form action="/tasks" method="post">-->
 
-    <label>Skonczony</label>
+            <!--<label for="name">Podaj nazwe</label>-->
 
-    <input type="checkbox" name="finished">
+            <!--<input type="text" name="name" id="name">-->
 
-    <input type="submit" value="Dodaj zadanie"></form>
+            <!--<label for="description">Podaj opis</label>-->
 
+            <!--<textarea name="description" id="description"></textarea>-->
+
+            <!--<label for="finished">Skonczony</label>-->
+
+            <!--<input type="checkbox" name="finished" id="finished">-->
+
+            <!--<input type="submit" value="Dodaj zadanie"></form>-->
+
+            <form action="/tasks" method="post">
+                <div class="form-group">
+                    <label for="name">Nazwa zadania</label>
+                    <input type="text" name="name" class="form-control" id="name" aria-describedby="name"
+                           placeholder="name">
+                    <small id="taskHelp" class="form-text text-muted">Task Name</small>
+                </div>
+                <div class="form-group">
+                    <label for="description">Opis</label>
+                    <input type="text" name="description" class="form-control" id="description"
+                           placeholder="description">
+                    <small id="descriptionHelp" class="form-text text-muted">Description</small>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" name="finished" class="form-check-input" id="finished">
+                    <label class="form-check-label" for="finished">Skończone</label>
+                    <small id="finishedHelp" class="form-text text-muted">finished or not</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Dodaj</button>
+            </form>
+
+        </div>
+    </div>
+
+
+    <!--<ul>-->
+
+    <!--<li>a</li>-->
+
+    <!--<li>b</li>-->
+
+    <!--<li>c</li>-->
+
+    <!--<li>d</li>-->
+
+    <!--</ul>-->
+
+    <div id="choinka"></div>
+
+
+</section>
+<!--dwa linki żeby po zmniejszeniu działało meny-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/main.js}"></script>
 </body>
 </html>
